@@ -5,17 +5,30 @@ import AppContext from "../components/context";
 import Home from "./index"
 import Layout from "../components/layout"
 import Cookie from "js-cookie"
+// import Login from "./login";
+
+// function App() {
+//   return (
+//   <div classname="App">
+//     <Login />
+//     <Logout />
+//   </div>
+//   );
+// }
+
+
 // import Title from "./Title"
 
 
 function MyApp(props){
-  var {cart,addItem,removeItem, user, setUser} = useContext(AppContext)
+  var {cart,addItem,removeItem, user, clearCart, setUser} = useContext(AppContext)
   const [state,setState] = useState({cart:cart});
   const { Component, pageProps } = props;
-  
+  const [currentUser, setCurrentUser] = useState( {user:user} );
   
   setUser = (user) => {
-    setState({ user });
+    // setState({ user });
+    setCurrentUser( {user} )
   };
   addItem = (item) => {
     let { items } = state.cart;
@@ -85,27 +98,38 @@ function MyApp(props){
   }
 
   return (
-    <AppContext.Provider value={{cart: state.cart, addItem: addItem, removeItem: removeItem,isAuthenticated:false,user:null,setUser:()=>{}}}>
-      <Head>
     
-    ***Tyring to add html title?! 
-      {/* <tile>Restaurants</tile> */}
-   
+    <AppContext.Provider value={
+      {
+        cart: state.cart, 
+        addItem: addItem, 
+        removeItem: removeItem,
+        clearCart: clearCart,
+        isAuthenticated: (currentUser.user != null),
+        user: currentUser.user,
+        setUser: setUser,
+      }
+    }>
+      <Head>
+      
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossOrigin="anonymous"
       
-        />
-        
-      </Head>
-    
+          />
+         
+      </Head> 
+      
       <Layout>
+        
           <Component {...pageProps} />
+          
       </Layout>
 
     </AppContext.Provider>
+    
   );
   
 }

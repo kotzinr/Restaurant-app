@@ -35,7 +35,7 @@ const {user} = useContext(AppContext);
             }
           `}
         </style>
-        <Nav className="navbar navbar-dark bg-dark">
+        <Nav className="navbar navbar-dark bg-success">
           <NavItem>
             <Link href="/">
               <a className="navbar-brand">Home</a>

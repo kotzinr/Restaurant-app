@@ -3,6 +3,7 @@ import Dishes from "./dishes"
 import { useContext, useState } from 'react';
 
 
+
 import AppContext from "./context"
 import {
   Button,
@@ -39,9 +40,10 @@ function RestaurantList(props) {
   console.log(`Query Data: ${data.restaurants}`)
 
 
-  let searchQuery = data.restaurants.filter((res) => {
+  let searchQuery = data.restaurants.filter((res)  => {
     return res.name.toLowerCase().includes(props.search)
   }) || [];
+
 
   let restId = searchQuery[0] ? searchQuery[0].id : null;
 
@@ -65,7 +67,7 @@ function RestaurantList(props) {
           </CardBody>
           <div className="card-footer">
 
-            <Button color="info" onClick={() => setRestaurantID(res.id)}>{res.name}</Button>
+            <Button color="success" onClick={() => setRestaurantID(res.id)}>{res.name}</Button>
 
           </div>
         </Card>

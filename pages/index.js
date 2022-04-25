@@ -30,7 +30,7 @@ function Home() {
                 </InputGroup><br></br>
             </div>
             <RestaurantList search={query} />
-            <Dishes search={query} />
+            {/* <Dishes search={query} /> */}
             <Cart> </Cart>
         </ApolloProvider>
     );

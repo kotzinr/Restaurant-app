@@ -28,7 +28,7 @@ function CheckoutForm() {
 
   async function submitOrder() {
     // event.preventDefault();
-
+    
     // // Use elements.getElement to get a reference to the mounted Element.
     const cardElement = elements.getElement(CardElement);
 
@@ -49,14 +49,17 @@ function CheckoutForm() {
         city: data.city,
         state: data.state,
         token: token.token.id,
+        
       }),
     });
 
     if (!response.ok) {
       setError(response.statusText);
+    ;
+  
       console.log("SUCCESS")
     }
-
+    
     // OTHER stripe methods you can use depending on app
     // // or createPaymentMethod - https://stripe.com/docs/js/payment_intents/create_payment_method
     // stripe.createPaymentMethod({
@@ -94,7 +97,7 @@ function CheckoutForm() {
       </FormGroup>
 
       <CardSection data={data} stripeError={error} submitOrder={submitOrder} />
-
+      
       <style jsx global>
         {`
           .paper {
@@ -140,6 +143,7 @@ function CheckoutForm() {
             letter-spacing: 0.025em;
           }
           button {
+            
             white-space: nowrap;
             border: 0;
             outline: 0;
@@ -160,6 +164,7 @@ function CheckoutForm() {
             -webkit-transition: all 150ms ease;
             transition: all 150ms ease;
             margin-top: 10px;
+            
           }
           form {
             margin-bottom: 40px;
@@ -173,6 +178,7 @@ function CheckoutForm() {
             transform: translateY(-1px);
             box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
               0 3px 6px rgba(0, 0, 0, 0.08);
+              
           }
           input,
           .StripeElement {

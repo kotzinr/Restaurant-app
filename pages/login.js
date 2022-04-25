@@ -12,8 +12,60 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import { login } from "../components/auth";
+import { login, logout, withAuthSync } from "../components/auth";
 import AppContext from "../components/context";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+// import { GoogleLogin } from 'react-google-login';
+
+// const clientId ='YOUR_CLIENT_ID.apps.googleusercontent.com';
+
+// function Googlelogin() {
+//   const onSuccess = (res) => {
+//     console.log('[Login Success] currentUser:', res.profileObj);
+//   };
+
+//   const onFailure = (res) => {
+//     console.log('[Login failed] res:', res);
+  
+//   };
+  
+//   return (
+//     <div>
+//       <GoogleLogin
+//         clientId={clientId}
+//         buttonText="Google login"
+//         onSuccess={onSuccess}
+//         onFailure={onFailure}
+//         cookiePolicy={'single_host_origin'}
+//         style={{ marginTop: '100px' }}
+//         isSignedIn={true}
+//         />
+//     </div>
+//   );
+// };
+
+
+
+const auth = getAuth();
+signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+
 
 function Login(props) {
   const [data, updateData] = useState({ identifier: "", password: "" });
@@ -72,6 +124,9 @@ function Login(props) {
                       type="password"
                       name="password"
                       style={{ height: 50, fontSize: "1.2em" }}
+
+                      
+                  
                     />
                   </FormGroup>
 
@@ -138,8 +193,10 @@ function Login(props) {
           }
         `}
       </style>
+
+      
     </Container>
   );
 }
 
-export default Login;
+export default Login; 
