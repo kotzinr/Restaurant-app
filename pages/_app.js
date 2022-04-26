@@ -17,7 +17,6 @@ import Cookie from "js-cookie"
 // }
 
 
-// import Title from "./Title"
 
 
 function MyApp(props){

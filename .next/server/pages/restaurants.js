@@ -107,7 +107,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ "next/Link":
 /*!****************************!*\
-  !*** external "next/Link" ***!
+  !*** external "next/link" ***!
   \****************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
