@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import NextLink from 'next/link'
 
 export default function Home() {
     const restaurants = [
