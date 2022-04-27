@@ -2,7 +2,7 @@
 
 import React, { useContext } from "react";
 import Head from "next/head";
-import <NextLink; from; "next/link";
+import Link from "next/link";
 import { Container, Nav, NavItem } from "reactstrap";
 import AppContext from "./context";
 

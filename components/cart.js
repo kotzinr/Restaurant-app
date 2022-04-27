@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import { Button, Card, CardBody, CardTitle, Badge } from "reactstrap";
 import AppContext from "./context";
-import <NextLink; from; "next/link";
+import Link from "next/link"
 // we can pass cart data in via props method 
 // the alternative is using useContext as below
 function Cart() {

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import <NextLink; from; "next/link";
+import Link from "next/link";
 import Head from "next/head";
 import AppContext from "../components/context";
 import Home from "./index"
